@@ -260,9 +260,15 @@ export function HeroStage({
   );
 }
 
-export function ProductShape({ shape, accent = '#c1121f', size = 240 }: { shape: string; accent?: string; size?: number }) {
+export function ProductShape({ shape, accent = '#c1121f', size }: { shape: string; accent?: string; size?: number }) {
   const high = 'rgba(255,255,255,.85)';
-  const baseProps = { width: size, height: size, viewBox: '0 0 200 200', style: { display: 'block' } as const };
+  const baseProps = {
+    width: size ?? '100%',
+    height: size ?? '100%',
+    viewBox: '0 0 200 200',
+    preserveAspectRatio: 'xMidYMid meet' as const,
+    style: { display: 'block', maxWidth: '100%', maxHeight: '100%' } as const,
+  };
 
   const Frame = ({ children }: { children: ReactNode }) => (
     <svg {...baseProps}>

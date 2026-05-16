@@ -105,7 +105,7 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
 
           <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <div style={{ width: 'min(80%, 620px)', aspectRatio: '1' }}>
-              <ProductShape shape={p.shape} accent={ACCENT} size={620} />
+              <ProductShape shape={p.shape} accent={ACCENT} />
             </div>
           </div>
 
@@ -151,8 +151,8 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
                   padding: 6,
                 }}
               >
-                <div style={{ transform: `rotate(${i * 40}deg)`, height: '100%' }}>
-                  <ProductShape shape={p.shape} accent={ACCENT} size={52} />
+                <div style={{ transform: `rotate(${i * 40}deg)`, width: '100%', height: '100%' }}>
+                  <ProductShape shape={p.shape} accent={ACCENT} />
                 </div>
               </button>
             ))}

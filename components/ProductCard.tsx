@@ -30,7 +30,7 @@ export function ProductCard({ p, style = 'minimal' }: { p: Product; style?: 'min
       >
         <Link href={`/product/${p.id}`} style={{ display: 'block' }}>
           <div style={{ position: 'relative', aspectRatio: '1', overflow: 'hidden' }}>
-            <ProductShape shape={p.shape} accent={p.accent} size={360} />
+            <ProductShape shape={p.shape} accent={p.accent} />
             {p.badge && (
               <div style={{ position: 'absolute', top: 14, left: 14 }}>
                 <Badge>{p.badge}</Badge>
@@ -93,7 +93,7 @@ export function ProductCard({ p, style = 'minimal' }: { p: Product; style?: 'min
       >
         <Link href={`/product/${p.id}`} style={{ display: 'block' }}>
           <div style={{ position: 'relative', aspectRatio: '1', overflow: 'hidden', borderBottom: `2px solid ${ACCENT}` }}>
-            <ProductShape shape={p.shape} accent={ACCENT} size={360} />
+            <ProductShape shape={p.shape} accent={ACCENT} />
             {p.badge && (
               <div
                 style={{
@@ -188,10 +188,11 @@ export function ProductCard({ p, style = 'minimal' }: { p: Product; style?: 'min
             style={{
               transition: 'transform .6s var(--v-ease-out)',
               transform: hover ? 'scale(1.04)' : 'scale(1)',
+              width: '100%',
               height: '100%',
             }}
           >
-            <ProductShape shape={p.shape} accent={p.accent} size={360} />
+            <ProductShape shape={p.shape} accent={p.accent} />
           </div>
           {p.badge && (
             <div style={{ position: 'absolute', top: 14, left: 14 }}>

@@ -125,8 +125,11 @@ export default function CartPage() {
                 borderBottom: '1px solid var(--v-paper-3)',
               }}
             >
-              <Link href={`/product/${item.id}`} style={{ width: 120, height: 120, background: '#0a0a0a' }}>
-                <ProductShape shape={item.shape} accent={item.accent} size={120} />
+              <Link
+                href={`/product/${item.id}`}
+                style={{ display: 'block', width: 120, height: 120, background: '#0a0a0a' }}
+              >
+                <ProductShape shape={item.shape} accent={item.accent} />
               </Link>
               <div>
                 <div

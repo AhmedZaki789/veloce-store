@@ -372,8 +372,11 @@ function ShopContent() {
                     borderBottom: '1px solid var(--v-paper-3)',
                   }}
                 >
-                  <Link href={`/product/${p.id}`} style={{ width: 120, height: 120, background: '#0a0a0a' }}>
-                    <ProductShape shape={p.shape} accent={p.accent} size={120} />
+                  <Link
+                    href={`/product/${p.id}`}
+                    style={{ display: 'block', width: 120, height: 120, background: '#0a0a0a', flexShrink: 0 }}
+                  >
+                    <ProductShape shape={p.shape} accent={p.accent} />
                   </Link>
                   <Link href={`/product/${p.id}`} style={{ color: 'inherit' }}>
                     <div
