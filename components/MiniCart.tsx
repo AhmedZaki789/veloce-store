@@ -16,12 +16,14 @@ export function MiniCart() {
     <div style={{ position: 'fixed', inset: 0, zIndex: 60, animation: 'v-fade .25s' }}>
       <div onClick={() => setMiniOpen(false)} style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,.55)' }} />
       <div
+        className="v-minicart-drawer"
         style={{
           position: 'absolute',
           top: 0,
           right: 0,
           bottom: 0,
           width: 420,
+          maxWidth: '100%',
           background: 'var(--v-paper)',
           color: 'var(--v-ink)',
           display: 'flex',

@@ -5,7 +5,7 @@ import { Icon } from './Icon';
 export function Footer() {
   return (
     <footer style={{ background: '#070707', color: '#fff', borderTop: '1px solid var(--v-line)', marginTop: 0 }}>
-      <div style={{ padding: '80px 32px 40px', borderBottom: '1px solid var(--v-line)' }}>
+      <div className="v-footer-wordmark" style={{ padding: '80px 32px 40px', borderBottom: '1px solid var(--v-line)' }}>
         <div
           style={{
             fontFamily: 'var(--v-display)',
@@ -21,7 +21,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1.4fr', gap: 48, padding: '56px 32px' }}>
+      <div className="v-footer-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1.4fr', gap: 48, padding: '56px 32px' }}>
         <div>
           <div className="v-eyebrow" style={{ color: 'var(--v-red)', marginBottom: 14 }}>
             The Newsletter
@@ -81,6 +81,7 @@ export function Footer() {
       </div>
 
       <div
+        className="v-footer-bottom"
         style={{
           display: 'flex',
           justifyContent: 'space-between',

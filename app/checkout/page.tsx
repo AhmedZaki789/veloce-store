@@ -77,7 +77,7 @@ export default function CheckoutPage() {
 
   return (
     <main className="v-screen" style={{ background: 'var(--v-paper)', color: 'var(--v-ink)', minHeight: '90vh' }}>
-      <section style={{ background: '#0a0a0a', color: '#fff', padding: '40px 56px', position: 'relative' }}>
+      <section className="v-checkout-banner" style={{ background: '#0a0a0a', color: '#fff', padding: '40px 56px', position: 'relative' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div>
             <div className="v-eyebrow" style={{ color: ACCENT, marginBottom: 10 }}>
@@ -94,6 +94,7 @@ export default function CheckoutPage() {
         </div>
 
         <div
+          className="v-checkout-stepper"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
@@ -137,11 +138,11 @@ export default function CheckoutPage() {
         </div>
       </section>
 
-      <section style={{ display: 'grid', gridTemplateColumns: '1fr 440px', gap: 0, alignItems: 'start' }}>
-        <div style={{ padding: '48px 56px' }}>
+      <section className="v-checkout-layout" style={{ display: 'grid', gridTemplateColumns: '1fr 440px', gap: 0, alignItems: 'start' }}>
+        <div className="v-checkout-form" style={{ padding: '48px 56px' }}>
           {step === 1 && (
             <>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 12, marginBottom: 32 }}>
+              <div className="v-checkout-express" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 12, marginBottom: 32 }}>
                 <button
                   style={{
                     padding: '18px',
@@ -210,7 +211,7 @@ export default function CheckoutPage() {
               <p style={{ opacity: 0.6, fontSize: 13, marginBottom: 24 }}>Where shall we send the parts?</p>
 
               <Field label="Contact email" value={form.email} onChange={(v) => set('email', v)} />
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14, marginTop: 14 }}>
+              <div className="v-checkout-row-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14, marginTop: 14 }}>
                 <Field label="First name" value={form.firstName} onChange={(v) => set('firstName', v)} />
                 <Field label="Last name" value={form.lastName} onChange={(v) => set('lastName', v)} />
               </div>
@@ -226,7 +227,7 @@ export default function CheckoutPage() {
                 onChange={(v) => set('address2', v)}
                 style={{ marginTop: 14 }}
               />
-              <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gap: 14, marginTop: 14 }}>
+              <div className="v-checkout-row-3" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gap: 14, marginTop: 14 }}>
                 <Field label="City" value={form.city} onChange={(v) => set('city', v)} />
                 <Field label="ZIP" value={form.zip} onChange={(v) => set('zip', v)} />
                 <Field label="Country" value={form.country} onChange={(v) => set('country', v)} />
@@ -291,7 +292,7 @@ export default function CheckoutPage() {
                 All transactions encrypted with 256-bit SSL.
               </p>
 
-              <div style={{ display: 'flex', gap: 8, marginBottom: 24 }}>
+              <div className="v-checkout-pay-tabs" style={{ display: 'flex', gap: 8, marginBottom: 24 }}>
                 {(
                   [
                     { id: 'card', l: 'CARD' },
@@ -333,7 +334,7 @@ export default function CheckoutPage() {
                     mono
                     style={{ marginTop: 14 }}
                   />
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14, marginTop: 14 }}>
+                  <div className="v-checkout-row-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14, marginTop: 14 }}>
                     <Field label="Expiry · MM / YY" value={form.cardExp} onChange={(v) => set('cardExp', v)} mono />
                     <Field label="CVC" value={form.cardCvc} onChange={(v) => set('cardCvc', v)} mono />
                   </div>
@@ -557,6 +558,7 @@ export default function CheckoutPage() {
         </div>
 
         <aside
+          className="v-checkout-aside"
           style={{
             background: '#fff',
             borderLeft: '1px solid var(--v-paper-3)',

@@ -38,6 +38,7 @@ function ShopContent() {
   return (
     <main className="v-screen" style={{ background: 'var(--v-paper)', color: 'var(--v-ink)' }}>
       <section
+        className="v-pad-section"
         style={{
           background: '#0a0a0a',
           color: '#fff',
@@ -113,8 +114,9 @@ function ShopContent() {
         </div>
       </section>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '260px 1fr', gap: 0 }}>
+      <div className="v-shop-layout" style={{ display: 'grid', gridTemplateColumns: '260px 1fr', gap: 0 }}>
         <aside
+          className="v-shop-sidebar"
           style={{
             background: '#fff',
             borderRight: '1px solid var(--v-paper-3)',
@@ -244,8 +246,9 @@ function ShopContent() {
           </div>
         </aside>
 
-        <div style={{ padding: '32px 40px 80px' }}>
+        <div className="v-shop-main" style={{ padding: '32px 40px 80px' }}>
           <div
+            className="v-shop-toolbar"
             style={{
               display: 'flex',
               justifyContent: 'space-between',
@@ -330,7 +333,7 @@ function ShopContent() {
           </div>
 
           {view === 'grid' ? (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
+            <div className="v-shop-grid v-grid-3-tablet" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
               {filtered.map((p) => (
                 <ProductCard key={p.id} p={p} style="minimal" />
               ))}

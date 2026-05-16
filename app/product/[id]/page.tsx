@@ -37,6 +37,7 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
   return (
     <main className="v-screen" style={{ background: '#0a0a0a', color: '#fff' }}>
       <div
+        className="v-breadcrumbs"
         style={{
           padding: '24px 56px',
           borderBottom: '1px solid var(--v-line)',
@@ -62,8 +63,8 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
         <span>{p.sku}</span>
       </div>
 
-      <section style={{ display: 'grid', gridTemplateColumns: '1fr 480px', minHeight: 'calc(100vh - 96px - 49px)' }}>
-        <div style={{ position: 'relative', background: '#000', overflow: 'hidden' }}>
+      <section className="v-product-main" style={{ display: 'grid', gridTemplateColumns: '1fr 480px', minHeight: 'calc(100vh - 96px - 49px)' }}>
+        <div className="v-product-gallery" style={{ position: 'relative', background: '#000', overflow: 'hidden' }}>
           {['top-left', 'top-right', 'bottom-left', 'bottom-right'].map((c) => {
             const st: React.CSSProperties = { position: 'absolute', width: 32, height: 32, border: '1px solid rgba(255,255,255,.3)' };
             if (c.includes('top')) st.top = 20;
@@ -197,6 +198,7 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
         </div>
 
         <div
+          className="v-product-purchase"
           style={{
             background: '#0a0a0a',
             borderLeft: '1px solid var(--v-line)',
@@ -447,6 +449,7 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
       </section>
 
       <section
+        className="v-pad-section-sm"
         style={{
           background: 'var(--v-red)',
           color: '#fff',
@@ -455,7 +458,7 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
           borderBottom: '1px solid #fff',
         }}
       >
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 24 }}>
+        <div className="v-home-stats-grid v-grid-5-tablet" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 24 }}>
           {[
             { n: 1200, s: '', l: 'BAR PRESSURE' },
             { n: 180, s: '°', l: 'CURE' },
@@ -487,8 +490,8 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
         </div>
       </section>
 
-      <section style={{ background: 'var(--v-paper)', color: 'var(--v-ink)', padding: '80px 56px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 32 }}>
+      <section className="v-pad-section" style={{ background: 'var(--v-paper)', color: 'var(--v-ink)', padding: '80px 56px' }}>
+        <div className="v-home-section-head" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 32 }}>
           <h2 className="v-display" style={{ fontSize: 'clamp(40px, 5vw, 72px)', margin: 0 }}>
             Pairs Well With
           </h2>
@@ -506,7 +509,7 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
             View all →
           </Link>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 18 }}>
+        <div className="v-shop-grid v-grid-4-tablet" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 18 }}>
           {related.map((r) => (
             <ProductCard key={r.id} p={r} style="minimal" />
           ))}

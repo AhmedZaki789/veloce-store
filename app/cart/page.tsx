@@ -88,9 +88,10 @@ export default function CartPage() {
         </div>
       </section>
 
-      <section style={{ display: 'grid', gridTemplateColumns: '1fr 440px', gap: 0, alignItems: 'start' }}>
-        <div style={{ padding: '40px 40px 60px' }}>
+      <section className="v-cart-layout" style={{ display: 'grid', gridTemplateColumns: '1fr 440px', gap: 0, alignItems: 'start' }}>
+        <div className="v-cart-main" style={{ padding: '40px 40px 60px' }}>
           <div
+            className="v-cart-headers"
             style={{
               display: 'grid',
               gridTemplateColumns: '120px 1fr 140px 120px 80px 40px',
@@ -116,6 +117,7 @@ export default function CartPage() {
           {cart.map((item) => (
             <div
               key={item.id + item.name}
+              className="v-cart-line"
               style={{
                 display: 'grid',
                 gridTemplateColumns: '120px 1fr 140px 120px 80px 40px',
@@ -123,6 +125,7 @@ export default function CartPage() {
                 gap: 24,
                 padding: '24px 0',
                 borderBottom: '1px solid var(--v-paper-3)',
+                position: 'relative',
               }}
             >
               <Link
@@ -251,6 +254,7 @@ export default function CartPage() {
         </div>
 
         <aside
+          className="v-cart-aside"
           style={{
             background: '#fff',
             borderLeft: '1px solid var(--v-paper-3)',

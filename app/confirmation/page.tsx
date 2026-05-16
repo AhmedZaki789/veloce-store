@@ -27,7 +27,7 @@ function ConfirmationContent() {
         }}
       />
 
-      <section style={{ position: 'relative', padding: '80px 56px', textAlign: 'center', maxWidth: 920, margin: '0 auto' }}>
+      <section className="v-confirm-section" style={{ position: 'relative', padding: '80px 56px', textAlign: 'center', maxWidth: 920, margin: '0 auto' }}>
         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 32 }}>
           <div style={{ display: 'flex', gap: 0 }}>
             {Array.from({ length: 24 }).map((_, i) => (
@@ -69,6 +69,7 @@ function ConfirmationContent() {
         </p>
 
         <div
+          className="v-confirm-stats"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(4, 1fr)',
@@ -154,7 +155,7 @@ function ConfirmationContent() {
           </div>
         </div>
 
-        <div style={{ display: 'flex', gap: 14, justifyContent: 'center', marginTop: 48 }}>
+        <div className="v-confirm-cta" style={{ display: 'flex', gap: 14, justifyContent: 'center', marginTop: 48 }}>
           <Link href="/" className="v-btn v-btn--lg">
             Back to Home{' '}
             <span className="arr">

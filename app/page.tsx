@@ -39,6 +39,7 @@ export default function Home() {
           <HeroReticle accent={ACCENT} />
 
           <div
+            className="v-hero-stage"
             style={{
               position: 'absolute',
               inset: 0,
@@ -56,7 +57,9 @@ export default function Home() {
                   <TypeOn text="VLC-PT-0001 — PRECISION PEN" speed={30} />
                 </span>
               </div>
-              <DataStream accent={ACCENT} />
+              <div className="v-hero-data">
+                <DataStream accent={ACCENT} />
+              </div>
             </div>
 
             <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -121,7 +124,7 @@ export default function Home() {
             </div>
 
             <div style={{ position: 'relative' }}>
-              <div style={{ width: 'min(96%, 1400px)', margin: '0 auto 28px', position: 'relative' }}>
+              <div className="v-hero-pen-wrap" style={{ width: 'min(96%, 1400px)', margin: '0 auto 28px', position: 'relative' }}>
                 <PaintPen accent={ACCENT} glow />
                 <div
                   style={{
@@ -144,7 +147,7 @@ export default function Home() {
                   gap: 24,
                 }}
               >
-                <div style={{ display: 'flex', gap: 12 }}>
+                <div className="v-hero-cta" style={{ display: 'flex', gap: 12 }}>
                   <Link href={`/product/${HERO_PRODUCT_ID}`} className="v-btn v-btn--lg">
                     Shop the Pen · €690{' '}
                     <span className="arr">
@@ -155,7 +158,7 @@ export default function Home() {
                     All Accessories
                   </Link>
                 </div>
-                <div style={{ textAlign: 'right', maxWidth: 280 }}>
+                <div className="v-hero-bottom-meta" style={{ textAlign: 'right', maxWidth: 280 }}>
                   <div
                     style={{
                       fontFamily: 'var(--v-mono)',
@@ -231,10 +234,12 @@ export default function Home() {
 
       {/* PEN DEEP-DIVE ================================================== */}
       <section
+        className="v-home-pendive"
         style={{ background: '#0a0a0a', color: '#fff', padding: '140px 56px 120px', position: 'relative', overflow: 'hidden' }}
       >
         <div className="v-grid-bg" style={{ position: 'absolute', inset: 0, opacity: 0.35 }} />
         <div
+          className="v-home-pendive"
           style={{
             position: 'relative',
             display: 'grid',
@@ -408,7 +413,7 @@ export default function Home() {
               ))}
             </div>
 
-            <div style={{ marginTop: 36, display: 'flex', gap: 12 }}>
+            <div className="v-home-pendive-cta" style={{ marginTop: 36, display: 'flex', gap: 12 }}>
               <Link href={`/product/${HERO_PRODUCT_ID}`} className="v-btn">
                 Inspect the Pen · €690{' '}
                 <span className="arr">
@@ -424,7 +429,7 @@ export default function Home() {
       </section>
 
       {/* WHAT IT FINDS — three-panel diagnostic ========================== */}
-      <section style={{ background: '#fff', color: 'var(--v-ink)', padding: '120px 56px', position: 'relative' }}>
+      <section className="v-pad-section" style={{ background: '#fff', color: 'var(--v-ink)', padding: '120px 56px', position: 'relative' }}>
         <RevealOnScroll>
           <div style={{ textAlign: 'center', marginBottom: 64 }}>
             <div className="v-eyebrow" style={{ color: ACCENT, marginBottom: 14 }}>
@@ -438,7 +443,7 @@ export default function Home() {
           </div>
         </RevealOnScroll>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
+        <div className="v-home-diagnostic-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
           {[
             { n: 124, v: 'ORIGINAL', c: '#1a8a3a', d: 'Factory paint, never touched. Confirmed OEM thickness ± 8µm.', range: '80–160µm' },
             { n: 318, v: 'REPAINTED', c: '#c9952b', d: 'A respray over the original — common after a scratch repair.', range: '200–400µm' },
@@ -524,8 +529,9 @@ export default function Home() {
       </section>
 
       {/* COLLECTIONS GRID ================================================ */}
-      <section style={{ background: '#0a0a0a', color: '#fff', padding: '120px 56px' }}>
+      <section className="v-pad-section" style={{ background: '#0a0a0a', color: '#fff', padding: '120px 56px' }}>
         <div
+          className="v-home-section-head"
           style={{
             display: 'flex',
             justifyContent: 'space-between',
@@ -562,7 +568,7 @@ export default function Home() {
           </Link>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 1, background: 'var(--v-line)' }}>
+        <div className="v-home-categories-grid v-grid-5-tablet" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 1, background: 'var(--v-line)' }}>
           {CATEGORIES.map((c) => (
             <Link
               key={c.id}
@@ -612,8 +618,9 @@ export default function Home() {
       </section>
 
       {/* FEATURED ========================================================= */}
-      <section style={{ background: 'var(--v-paper)', color: 'var(--v-ink)', padding: '120px 56px' }}>
+      <section className="v-pad-section" style={{ background: 'var(--v-paper)', color: 'var(--v-ink)', padding: '120px 56px' }}>
         <div
+          className="v-home-section-head"
           style={{
             display: 'flex',
             justifyContent: 'space-between',
@@ -646,7 +653,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
+        <div className="v-home-featured-grid v-grid-3-tablet" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
           {FEATURED.map((id) => {
             const p = PRODUCTS.find((x) => x.id === id)!;
             return <ProductCard key={p.id} p={p} style="minimal" />;
@@ -656,6 +663,7 @@ export default function Home() {
 
       {/* MANIFESTO ====================================================== */}
       <section
+        className="v-home-manifesto"
         style={{
           background: '#000',
           color: '#fff',
@@ -682,6 +690,7 @@ export default function Home() {
         </div>
 
         <div
+          className="v-home-manifesto"
           style={{
             position: 'relative',
             display: 'grid',
@@ -725,6 +734,7 @@ export default function Home() {
               placed by hand in our Milano atelier.
             </p>
             <div
+              className="v-home-stats-grid"
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(3, 1fr)',
@@ -764,6 +774,7 @@ export default function Home() {
 
       {/* EDITORIAL SPLIT ================================================ */}
       <section
+        className="v-home-atelier"
         style={{
           background: 'var(--v-paper)',
           display: 'grid',
@@ -772,6 +783,7 @@ export default function Home() {
         }}
       >
         <div
+          className="v-home-atelier-text"
           style={{
             padding: '80px 56px',
             display: 'flex',
@@ -868,7 +880,7 @@ export default function Home() {
           borderBottom: '1px solid var(--v-line)',
         }}
       >
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 24 }}>
+        <div className="v-home-trust v-grid-4-tablet" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 24 }}>
           {[
             { ic: 'truck', h: 'Worldwide shipping', s: 'Direct to 47 countries · DHL Express' },
             { ic: 'shield', h: 'Fitment guarantee', s: 'Designed for your spec · or full refund' },

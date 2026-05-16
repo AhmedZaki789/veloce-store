@@ -16,8 +16,9 @@ export default function AccountPage() {
 
   return (
     <main className="v-screen" style={{ background: '#0a0a0a', color: '#fff', minHeight: '90vh' }}>
-      <section style={{ display: 'grid', gridTemplateColumns: '1fr 520px', minHeight: '80vh' }}>
+      <section className="v-account-layout" style={{ display: 'grid', gridTemplateColumns: '1fr 520px', minHeight: '80vh' }}>
         <div
+          className="v-account-editorial"
           style={{
             position: 'relative',
             background: '#000',
@@ -29,7 +30,7 @@ export default function AccountPage() {
           }}
         >
           <div className="v-grid-bg" style={{ position: 'absolute', inset: 0, opacity: 0.3 }} />
-          <div style={{ position: 'absolute', right: -20, bottom: -40, opacity: 0.3 }}>
+          <div style={{ position: 'absolute', right: -20, bottom: -40, opacity: 0.3, width: '95%', pointerEvents: 'none' }}>
             <CarSVG intensity={1} accent={ACCENT} />
           </div>
 
@@ -44,7 +45,7 @@ export default function AccountPage() {
             </h1>
           </div>
 
-          <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24, marginTop: 60 }}>
+          <div className="v-account-features" style={{ position: 'relative', display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24, marginTop: 60 }}>
             {[
               { h: 'Fitment locker', s: 'Save vehicles · auto-filter the catalogue' },
               { h: 'Priority access', s: 'Drops 24h before public release' },
@@ -68,6 +69,7 @@ export default function AccountPage() {
         </div>
 
         <div
+          className="v-account-form"
           style={{
             background: '#0a0a0a',
             borderLeft: '1px solid var(--v-line)',

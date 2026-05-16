@@ -2,12 +2,19 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { useCart } from '@/lib/cart-context';
 import { Icon } from './Icon';
 
 export function Header() {
   const pathname = usePathname() || '/';
   const { cartCount, setMiniOpen } = useCart();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // close mobile menu on route change
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
 
   const isDark =
     pathname === '/' ||
@@ -39,6 +46,7 @@ export function Header() {
       }}
     >
       <div
+        className="v-header-util"
         style={{
           display: 'flex',
           justifyContent: 'space-between',
@@ -74,6 +82,7 @@ export function Header() {
       </div>
 
       <div
+        className="v-header-main"
         style={{
           display: 'grid',
           gridTemplateColumns: '1fr auto 1fr',
@@ -82,7 +91,23 @@ export function Header() {
           gap: 24,
         }}
       >
-        <nav style={{ display: 'flex', gap: 32, alignItems: 'center' }}>
+        {/* Hamburger (mobile only) */}
+        <button
+          onClick={() => setMenuOpen(true)}
+          aria-label="Open menu"
+          className="v-show-mobile-flex"
+          style={{
+            display: 'none',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: 6,
+            color: 'inherit',
+          }}
+        >
+          <Icon name="menu" size={22} />
+        </button>
+
+        <nav className="v-header-nav" style={{ display: 'flex', gap: 32, alignItems: 'center' }}>
           <Link href="/shop" style={{ ...linkSt, opacity: pathname === '/shop' ? 1 : 0.78 }}>
             Shop
           </Link>
@@ -102,6 +127,7 @@ export function Header() {
 
         <Link
           href="/"
+          className="v-header-logo"
           style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2, letterSpacing: '.02em' }}
         >
           <span style={{ fontFamily: 'var(--v-display)', fontSize: 30, lineHeight: 1, letterSpacing: '.08em' }}>VELOCE</span>
@@ -110,7 +136,7 @@ export function Header() {
           </span>
         </Link>
 
-        <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 14, alignItems: 'center' }}>
+        <div className="v-header-icons" style={{ display: 'flex', justifyContent: 'flex-end', gap: 14, alignItems: 'center' }}>
           <button style={{ padding: 8 }} aria-label="Search">
             <Icon name="search" size={18} />
           </button>
@@ -119,6 +145,7 @@ export function Header() {
           </Link>
           <button
             onClick={() => setMiniOpen(true)}
+            className="v-header-cart"
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -138,6 +165,108 @@ export function Header() {
           </button>
         </div>
       </div>
+
+      {/* MOBILE DRAWER */}
+      {menuOpen && (
+        <div
+          style={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: 70,
+            background: 'rgba(0,0,0,.55)',
+            animation: 'v-fade .2s var(--v-ease-out)',
+          }}
+          onClick={() => setMenuOpen(false)}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              bottom: 0,
+              width: 'min(86%, 360px)',
+              background: '#0a0a0a',
+              color: '#fff',
+              padding: '24px 24px 32px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 4,
+              animation: 'v-fade .25s var(--v-ease-out)',
+            }}
+          >
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 }}>
+              <span style={{ fontFamily: 'var(--v-display)', fontSize: 24, letterSpacing: '.08em' }}>VELOCE</span>
+              <button onClick={() => setMenuOpen(false)} style={{ padding: 8, color: '#fff' }} aria-label="Close menu">
+                <Icon name="close" size={20} />
+              </button>
+            </div>
+            <div
+              className="v-eyebrow"
+              style={{ color: 'var(--v-red)', marginBottom: 10, paddingBottom: 8, borderBottom: '1px solid var(--v-line)' }}
+            >
+              ◢ NAVIGATE
+            </div>
+            {[
+              { l: 'Shop · all', h: '/shop' },
+              { l: 'Exterior', h: '/shop?cat=exterior' },
+              { l: 'Interior', h: '/shop?cat=interior' },
+              { l: 'Tech', h: '/shop?cat=tech' },
+              { l: 'Detailing', h: '/shop?cat=detailing' },
+              { l: 'Lifestyle', h: '/shop?cat=lifestyle' },
+            ].map((l) => (
+              <Link
+                key={l.h + l.l}
+                href={l.h}
+                style={{
+                  padding: '16px 0',
+                  borderBottom: '1px solid var(--v-line)',
+                  fontFamily: 'var(--v-display)',
+                  fontSize: 22,
+                  textTransform: 'uppercase',
+                  letterSpacing: '.05em',
+                }}
+              >
+                {l.l}
+              </Link>
+            ))}
+            <div
+              className="v-eyebrow"
+              style={{ color: 'var(--v-red)', margin: '24px 0 10px', paddingBottom: 8, borderBottom: '1px solid var(--v-line)' }}
+            >
+              ◢ ACCOUNT
+            </div>
+            <Link
+              href="/account"
+              style={{
+                padding: '12px 0',
+                fontFamily: 'var(--v-mono)',
+                fontSize: 12,
+                letterSpacing: '.2em',
+                textTransform: 'uppercase',
+              }}
+            >
+              Sign in
+            </Link>
+            <Link
+              href="/cart"
+              style={{
+                padding: '12px 0',
+                fontFamily: 'var(--v-mono)',
+                fontSize: 12,
+                letterSpacing: '.2em',
+                textTransform: 'uppercase',
+              }}
+            >
+              Bag ({cartCount})
+            </Link>
+
+            <div style={{ marginTop: 'auto', paddingTop: 24, opacity: 0.55, fontFamily: 'var(--v-mono)', fontSize: 10, letterSpacing: '.2em' }}>
+              HQ MILANO · SHIPS TO 47 COUNTRIES
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
